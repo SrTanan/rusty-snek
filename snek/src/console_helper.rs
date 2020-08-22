@@ -1,10 +1,11 @@
 //Console helper functions, used for console operations.
+//All of this was taken from stackoverflow. https://stackoverflow.com/a/46816921
 
 extern crate winapi;
 use winapi::shared::ntdef::*;
 use winapi::shared::minwindef::*;
 use winapi::um::wincon::*;
-use CONSOLE_HANDLE;
+static mut CONSOLE_HANDLE: Option<HANDLE> = None;
 
 pub fn get_output_handle() -> HANDLE {
     unsafe {
